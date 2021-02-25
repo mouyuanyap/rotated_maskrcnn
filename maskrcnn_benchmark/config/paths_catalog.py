@@ -8,6 +8,14 @@ class DatasetCatalog(object):
     DATA_DIR = "datasets"
     DATASETS = {
         # CUSTOM STUFF START
+        "HRSC2016_test": {
+            "img_dir": "/content/drive/MyDrive/HRSC2016/test_cut/images",
+            "ann_file": "/content/drive/MyDrive/HRSC2016/test_cut/test_cut.json"
+        },
+        "HRSC2016_train": {
+            "img_dir": "/content/drive/MyDrive/HRSC2016/trainval_cut/images",
+            "ann_file": "/content/drive/MyDrive/HRSC2016/trainval_cut/trainval_cut.json"
+        },
         "cocopose_2014_debug": {
             "img_dir": "LOV/data",
             "ann_file": "LOV/coco_lov_debug.json"
@@ -127,7 +135,7 @@ class DatasetCatalog(object):
 
     @staticmethod
     def get(name):
-        if "coco" in name:
+        if "coco" in name or "HRSC" in name:
             data_dir = DatasetCatalog.DATA_DIR
             attrs = DatasetCatalog.DATASETS[name]
             args = dict(
